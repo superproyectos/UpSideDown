@@ -40,7 +40,13 @@ public class ContadorGrafico extends Contador implements Drawable
 	}
 
 	@Override
-	public void dibujar ()
+	public void nuevo()
+	{
+		super.nuevo();
+		animar();
+	}
+	@Override
+	public void draw()
 	{
 		faltantes.setTexto(Integer.toString(getContador()>0?getContador():0));
 		fondoContadorCircular.dibujar();

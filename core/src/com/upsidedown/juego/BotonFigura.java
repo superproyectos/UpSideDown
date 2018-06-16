@@ -19,8 +19,8 @@ public class BotonFigura extends Boton
 		Escenario.addActor(this);
 	}
 	@Override
-	public void dibujar()
+	public void draw()
 	{
-		polygon.dibujar();
+		polygon.draw();
 	}
 }

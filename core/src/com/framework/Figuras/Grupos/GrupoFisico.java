@@ -100,10 +100,10 @@ public class GrupoFisico extends Grupo implements PropiedadesFisicas
     }
 
     @Override
-    public void dibujar()
+    public void draw()
     {
         cambioPosicion();
-        super.dibujar();
+        super.draw();
     }
     public void addVelocidad(Vector2 velocidad)
     {

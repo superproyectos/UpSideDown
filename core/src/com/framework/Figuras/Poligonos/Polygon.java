@@ -7,7 +7,7 @@ import com.framework.Figuras.Canvas;
 import com.framework.Figuras.Figura;
 import com.framework.Texturas.TexturaRelleno;
 
-/**Polígonos que se puedan dibujar*/
+/**Polígonos que se puedan draw*/
 
 public abstract class Polygon extends Figura
 {
@@ -20,7 +20,7 @@ public abstract class Polygon extends Figura
 
     private Vertex vertex;
 
-    /**Figura a dibujar*/
+    /**Figura a draw*/
 
     private PolygonSprite poligono;
 
@@ -147,7 +147,7 @@ public abstract class Polygon extends Figura
     /**Dibuja en un lienzo estático*/
 
     @Override
-    public void dibujar()
+    public void draw()
     {
         LIENZO.begin();
         poligono.draw(LIENZO);

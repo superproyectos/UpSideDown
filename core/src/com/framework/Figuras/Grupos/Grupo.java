@@ -63,16 +63,16 @@ public class Grupo implements Drawable
 
     /** Recorre cada polígono para dibujarlo*/
     @Override
-    public void dibujar()
+    public void draw()
     {
         for (Polygon elemento:elementos)
-	        elemento.dibujar();
+	        elemento.draw();
     }
     public void pop()
     {
     	elementos.pop();
     }
-    public void limpiar()
+    public void clear()
     {
     	elementos.clear();
     }

@@ -1,12 +1,17 @@
 package com.upsidedown.juego.Creators;
 
-import com.framework.Figuras.Poligonos.Polygon;
 import com.framework.Texturas.TexturaRelleno;
+import com.upsidedown.GrupoBloques;
+import com.upsidedown.Sonidos;
+import com.upsidedown.juego.Board;
 
 public class Previsualizer
 {
 	private Creation creation =new Creation();
+
 	private Preview preview =new Preview();
+
+	private Board board;
 
 	public Preview getPreview()
 	{
@@ -17,19 +22,6 @@ public class Previsualizer
 	{
 		return creation;
 	}
-	public void setCreation(Creation creation)
-	{
-		this.creation=creation;
-	}
-	public void setPreview(Creation creation)
-	{
-		this.creation=creation;
-	}
-
-	public void addCreation(Polygon polygon)
-	{
-		creation.addElemento(polygon);
-	}
 
 	public void setBackground(TexturaRelleno relleno)
 	{
@@ -39,12 +31,40 @@ public class Previsualizer
 	}
 	public void clear()
 	{
-		creation.limpiar();
-		preview.limpiar();
+		creation.clear();
+		preview.clear();
 	}
 	public void draw()
 	{
-		creation.dibujar();
-		preview.dibujar();
+		creation.draw();
+		preview.draw();
+	}
+
+	public void setBoard(Board board)
+	{
+		this.board = board;
+	}
+
+	public Board getBoard()
+	{
+		return board;
+	}
+
+	public void becomeReal()
+	{
+		Sonidos.suelta();
+		preview.resultadoFinal();
+		GrupoBloques resultado = new GrupoBloques(preview);
+		resultado.setDensidad(1);
+		resultado.setFriccion(0.5f);
+		resultado.setRebote(0.1f);
+		clear();
+		board.addElementos(resultado);
+		changeCounterColor();
+	}
+	private void changeCounterColor()
+	{
+		Board.contador.nuevo();
+		Board.contador.setColor(preview.getRelleno());
 	}
 }

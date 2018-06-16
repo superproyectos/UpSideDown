@@ -66,13 +66,13 @@ public class Framework extends ApplicationAdapter
 		sss.end();
 		cuadrado.setRotacion((float)Math.toDegrees(algg.getAngle()));
 	cuadrado.setPosicion(algg.getPosition().x*PPM,algg.getPosition().y*PPM);
-		cuadrado.dibujar();
+		cuadrado.draw();
 		//poly.rotate(1.1f);
 		Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
         //camaraBordes.render(mundo,camara.combined);
 		camaras.modoDebug(mundo);
-        grupo.dibujar();
-        cir.dibujar();
+        grupo.draw();
+        cir.draw();
 		batch.begin();
 			sprite.draw(batch);
 		batch.end();

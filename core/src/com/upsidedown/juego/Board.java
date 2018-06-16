@@ -43,15 +43,18 @@ public class Board
 	public void addElementos(GrupoBloques grupoBloques)
 	{
 		elementos.add(grupoBloques);
-		contador.setColor(grupoBloques.getElementos().get(0).getRelleno());
+
+		puntaje.addPuntaje(grupoBloques.getSize());
 		scroll.setActivoSensor();
+		creator.setColor(new TexturaColor());
+
 	}
 	public void dibujar()
 	{
 		scroll.detectarScroll(elementos);
 
 		for (Drawable d:elementos)
-			d.dibujar();
+			d.draw();
 	}
 	private void setContador(int max)
 	{

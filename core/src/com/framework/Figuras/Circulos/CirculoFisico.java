@@ -1,6 +1,5 @@
 package com.framework.Figuras.Circulos;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.framework.Camara;
 import com.framework.Figuras.Fisicas.Cuerpos.CuerpoCircular;
@@ -83,9 +82,9 @@ public class CirculoFisico extends Circulo implements PropiedadesFisicas
     }
 
     @Override
-    public void dibujar()
+    public void draw()
     {
         cambioPosicion();
-        super.dibujar();
+        super.draw();
     }
 }

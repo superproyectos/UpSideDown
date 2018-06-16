@@ -6,7 +6,8 @@ import com.badlogic.gdx.audio.Sound;
 
 public class Sonidos
 {
-	public static final Sound SONIDOS[]={
+	public static final Sound SONIDOS[]=
+			{
 			/*0*/Gdx.audio.newSound( Gdx.files.getFileHandle("sounds/lose.mp3", Files.FileType.Internal)),
 			/*1*/Gdx.audio.newSound( Gdx.files.getFileHandle("sounds/pu.wav", Files.FileType.Internal)),
 			/*2*/Gdx.audio.newSound( Gdx.files.getFileHandle("sounds/suelta.mp3", Files.FileType.Internal)),
@@ -15,6 +16,7 @@ public class Sonidos
 			/*5*/Gdx.audio.newSound( Gdx.files.getFileHandle("sounds/explo.wav", Files.FileType.Internal)),
 			/*6*/Gdx.audio.newSound( Gdx.files.getFileHandle("sounds/llego.wav", Files.FileType.Internal)),
 			/*7*/Gdx.audio.newSound( Gdx.files.getFileHandle("sounds/destroy.wav", Files.FileType.Internal)),
+			/*8*/Gdx.audio.newSound( Gdx.files.getFileHandle("sounds/pop.mp3", Files.FileType.Internal))
 	};
 	public static void toque()
 	{
@@ -28,4 +30,5 @@ public class Sonidos
 	{
 		SONIDOS[2].play();
 	}
+	public static void pop(){SONIDOS[8].play();}
 }

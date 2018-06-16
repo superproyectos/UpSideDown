@@ -25,7 +25,7 @@ public class FondoContadorCircular
 	}
 	public void dibujar()
 	{
-		c1.dibujar();
+		c1.draw();
 		if(actFondo)
 		{
 			Gdx.gl.glEnable(GL20.GL_BLEND);
@@ -42,7 +42,7 @@ public class FondoContadorCircular
 			}
 		}
 
-		c2.dibujar();
+		c2.draw();
 	}
 	public void animar()
 	{

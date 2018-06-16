@@ -13,9 +13,9 @@ public class CreadorderCreadores implements Drawable
 		bloquescreadores.add(new CuadradoCreador(200,200,20,new TexturaColor(Color.PURPLE)));
 	}
 	@Override
-	public void dibujar()
+	public void draw()
 	{
 		for(ElementosCreadores elemento:bloquescreadores)
-			elemento.dibujar();
+			elemento.draw();
 	}
 }

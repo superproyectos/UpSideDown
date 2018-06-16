@@ -20,7 +20,7 @@ public class Presion extends InputListener
 	@Override
 	public boolean touchDown (InputEvent event, float x, float y, int pointer, int button)
 	{
-		if(creator.tipoAlmacenado() instanceof Hexagono)
+		if(creator.typeStored() instanceof Hexagono)
 			creator.sustituirCreador(new CreatorCuadrados(Camara.W/4,Camara.W/8,Camara.W/8,3,5,5, new TexturaColor(Colores.getColor(105, 52, 127,1))));
 		else
 			creator.sustituirCreador(new CreatorHexagonos(Camara.W/4,Camara.W/8,Camara.W/12,5,3,5, new TexturaColor(Colores.getColor(105, 52, 127,1))));

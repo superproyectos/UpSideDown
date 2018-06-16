@@ -6,67 +6,44 @@ import com.framework.Figuras.Grupos.Grupo;
 import com.framework.Figuras.Poligonos.Polygon;
 import com.framework.Texturas.TexturaColor;
 import com.framework.Texturas.TexturaRelleno;
-import com.upsidedown.GrupoBloques;
-import com.upsidedown.juego.BloqueCreador;
 import com.upsidedown.juego.Board;
 
 public abstract class Creator extends Grupo
 {
-	private Array<BloqueCreador>lienzo=new Array<BloqueCreador>();
-	private Previsualizer previsualizer=new Previsualizer();
-	private Board board;
+	private Array<CreatorSensor> creationArea =new Array<CreatorSensor>();
+
+	private static Previsualizer previsualizer=new Previsualizer();
 
 	public Creator()
 	{
-		setBackground(new TexturaColor());
-	}
-	public Creator(Polygon...elementos)
-	{
-		super(elementos);
-	}
-	public Creator(Array<Polygon> poligonos)
-	{
-		super(poligonos);
+		setColor(new TexturaColor());
 	}
 
-
-	public Board getBoard()
-	{
-		return board;
-	}
 	public void setBoard(Board board)
 	{
-		this.board = board;
+		previsualizer.setBoard(board);
 	}
-	public void addToBoard(GrupoBloques p)
-	{
-		board.addElementos(p);
-	}
-
 
 	@Override
-	public void dibujar()
+	public void draw()
 	{
-		super.dibujar();
+		super.draw();
 		previsualizer.draw();
 	}
 
-	public Array<BloqueCreador> getLienzo()
+	public Array<CreatorSensor> getCreationArea()
 	{
-		return lienzo;
-	}
-	public void addLienzo(BloqueCreador bloqueCreador)
-	{
-		lienzo.add(bloqueCreador);
+		return creationArea;
 	}
 
-	public void setBackground(TexturaRelleno relleno)
+	public void addCreatorSensor(CreatorSensor creatorSensor)
+	{
+		creationArea.add(creatorSensor);
+	}
+
+	public void setColor(TexturaRelleno relleno)
 	{
 		previsualizer.setBackground(relleno);
-	}
-	public void cambiarRelleno(Creation c, TexturaRelleno relleno)
-	{
-		c.cambiarRelleno(relleno);
 	}
 
 	public TexturaRelleno getRellenoCreaciones()
@@ -74,26 +51,24 @@ public abstract class Creator extends Grupo
 		return previsualizer.getCreation().getRelleno();
 	}
 
-
-	public void limpiar()
+	@Override
+	public void clear()
 	{
-		for(BloqueCreador a:lienzo)
+		for(CreatorSensor a: creationArea)
 			a.remove();
-
-		previsualizer.getCreation().limpiar();
-		previsualizer.getPreview().limpiar();
-		super.limpiar();
+		previsualizer.clear();
+		super.clear();
 	}
-	public Polygon tipoAlmacenado()
+
+	public Polygon typeStored()
 	{
 		return getElementos().get(0);
 	}
+
 	public void sustituirCreador(Creator c)
 	{
-		limpiar();
-		lienzo=c.getLienzo();
-		setPrevisualizer(c.getPrevisualizer());
-		c.setBoard(board);
+		clear();
+		creationArea =c.getCreationArea();
 		setElementos(c.getElementos());
 	}
 
@@ -102,8 +77,4 @@ public abstract class Creator extends Grupo
 		return previsualizer;
 	}
 
-	public void setPrevisualizer(Previsualizer previsualizer)
-	{
-		this.previsualizer = previsualizer;
-	}
 }

@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.framework.Figuras.Poligonos.Hexagono;
 import com.framework.Texturas.TexturaColor;
 import com.framework.Texturas.TexturaRelleno;
-import com.upsidedown.juego.BloqueCreador;
 
 public class CreatorHexagonos extends Creator
 {
@@ -18,12 +17,12 @@ public class CreatorHexagonos extends Creator
 			for (int j = 0; j < (i%2==0?columnas-1:columnas); j++)
 			{
 				Hexagono hexagono=new Hexagono(x+j*3*(radio-margen/2), y+i*(radio-radio/8f-margen/2), radio-margen, getRellenoCreaciones());
-				addLienzo(new BloqueCreador(hexagono,this));
+				addCreatorSensor(new CreatorSensor(hexagono,getPrevisualizer()));
 				addElemento(new Hexagono(x+j*3*(radio-margen/2), y+i*(radio-radio/8f-margen/2), radio, new TexturaColor(Color.WHITE)));
 				addElemento(new Hexagono(x+j*3*(radio-margen/2), y+i*(radio-radio/8f-margen/2), radio-margen, relleno));
 
 			}
 		}
-
 	}
+
 }

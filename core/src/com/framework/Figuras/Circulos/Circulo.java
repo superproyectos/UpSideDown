@@ -36,7 +36,7 @@ public class Circulo extends Figura
         LIENZO.setColor(LIENZO.getColor().r,LIENZO.getColor().g,LIENZO.getColor().b,LIENZO.getColor().a+f);
     }
     @Override
-    public void dibujar()
+    public void draw()
     {
         LIENZO.begin(ShapeRenderer.ShapeType.Filled);
             LIENZO.circle(getX(),getY(),getRadio());

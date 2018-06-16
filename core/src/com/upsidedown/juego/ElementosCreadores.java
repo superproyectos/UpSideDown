@@ -26,9 +26,9 @@ public abstract class ElementosCreadores extends Actor implements Dragable,Drawa
 		figura.setPosicion(getX()-figura.getX()+getWidth()/2,getY()-figura.getY()+getHeight()/2);
 	}
 	@Override
-	public void dibujar()
+	public void draw()
 	{
-		figura.dibujar();
+		figura.draw();
 	}
 	public Drag getDrag()
 	{

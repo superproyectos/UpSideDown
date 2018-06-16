@@ -1,7 +1,7 @@
 package com.framework.Figuras;
-/**Permite que el objeto se pueda dibujar*/
+/**Permite que el objeto se pueda draw*/
 public interface Drawable
 {
     /** Dibuja al objeto*/
-    void dibujar();
+    void draw();
 }
