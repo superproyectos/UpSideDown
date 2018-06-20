@@ -1,11 +1,6 @@
 package com.framework.Figuras;
 
-public class PolygonDrawer extends Canvas
+public class PolygonDrawer
 {
 
-	@Override
-	public void draw()
-	{
-
-	}
 }

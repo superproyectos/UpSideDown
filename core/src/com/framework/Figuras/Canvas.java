@@ -1,6 +1,6 @@
 package com.framework.Figuras;
 
-public abstract class Canvas
+public interface Canvas
 {
-	public abstract void draw();
+	void draw();
 }

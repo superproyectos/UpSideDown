@@ -9,14 +9,12 @@ import com.upsidedown.juego.Board;
 
 public abstract class Creator extends Grupo
 {
-	private Array<CreatorSensor> creationArea ;
+	private Array<CreatorSensor> creationArea=new Array<CreatorSensor>();
 
 	private static Previsualizer previsualizer=new Previsualizer();
 
 	public Creator()
 	{
-		creationArea=new Array<CreatorSensor>();
-		previsualizer=new Previsualizer();
 		previsualizer.setCounter();
 		setColor(new TexturaColor());
 	}

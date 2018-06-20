@@ -14,7 +14,8 @@ public abstract class Polygon extends Figura
     /**Lienzo que comparten todas las figuras*/
 
     protected static Canvas canvas;
-    public static final PolygonSpriteBatch LIENZO=new PolygonSpriteBatch();
+
+    protected static PolygonSpriteBatch LIENZO;
 
     /**Conjunto de estructuras para formar un polígono*/
 
@@ -28,6 +29,10 @@ public abstract class Polygon extends Figura
 
     private TexturaRelleno relleno;
 
+    public Polygon()
+    {
+        LIENZO=new PolygonSpriteBatch();
+    }
     /**Retorna la estuctura que conforma al polígono*/
 
     public Vertex getVertex()

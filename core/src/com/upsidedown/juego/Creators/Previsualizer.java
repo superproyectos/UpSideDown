@@ -66,7 +66,8 @@ public class Previsualizer
 
 	public void setCounter()
 	{
-		counter=new GraphicCounter(Camara.W/13+10, Camara.W/1.5f,Camara.W/13,MAX_NUM_OF_BLOCKS);
+		if(counter==null)
+			counter=new GraphicCounter(Camara.W/13+10, Camara.W/1.5f,Camara.W/13,MAX_NUM_OF_BLOCKS);
 	}
 	public GraphicCounter getCounter()
 	{
