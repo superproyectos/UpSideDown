@@ -1,71 +1,52 @@
 package com.upsidedown.juego;
 
-import com.badlogic.gdx.utils.Array;
 import com.framework.Camara;
-import com.framework.Figuras.Drawable;
+import com.framework.Figuras.Coord;
 import com.framework.Figuras.Fisicas.Cuerpos.TiposDeCuerpos.CuerpoKinematico;
 import com.framework.Figuras.Grupos.GrupoFisico;
 import com.framework.Figuras.Poligonos.Hexagono;
 import com.framework.Figuras.Poligonos.Rectangle;
-import com.framework.Texturas.Colores;
 import com.framework.Texturas.TexturaColor;
+import com.upsidedown.juego.Buttons.BotonFigura;
+import com.upsidedown.juego.Buttons.PowerUp;
 import com.upsidedown.juego.Creators.Creator;
-import com.upsidedown.juego.Creators.CreatorHexagonos;
-import com.upsidedown.GrupoBloques;
+import com.upsidedown.FinalShape;
 
 public class Board
 {
 	private Creator creator;
-	private Array<Drawable> elementos=new Array<Drawable>();
-	private Scroll scroll;
-	public static ContadorGrafico contador;
-	public static Puntaje puntaje;
+	private Interactor interactor;
+	private SetOfShapes shapes;
+	private ColisionManager colisionManager;
+
 	public Board()
 	{
-		puntaje=(new PuntajeGrafico(30,Camara.H-30,1.5f));
-		setContador(5);
-		elementos.add(contador);
-		//creator=new CreatorCuadrados(Camara.W/4,Camara.W/8,Camara.W/8,3,5,5, new TexturaColor(Colores.getColor(105, 52, 127,1)));
-		creator =new CreatorHexagonos(Camara.W/4,Camara.W/8,Camara.W/12,5,3,5, new TexturaColor(Colores.getColor(105, 52, 127,1)));
-		creator.setBoard(this);
-		contador.setColor(creator.getRellenoCreaciones());
-		elementos.add(creator);
-		//GRID DE 12
-		CreadorderCreadores x=new CreadorderCreadores();
-		elementos.add(x);
+		shapes=new SetOfShapes();
+		Data.score =(new ScoreGrafico(30,Camara.H-30,1.5f));
+		interactor=new Interactor();
+		FabricOfCreators c=new FabricOfCreators();
+		creator=c.createSquareCreator(this);
+		interactor.add(creator);
+
 		GrupoFisico suelo=new GrupoFisico(new Rectangle(Camara.W/4,Camara.H-50,Camara.W/2,50,new TexturaColor()));
 		suelo.setTipoCuerpo(new CuerpoKinematico());
-		elementos.add(suelo);
-		elementos.add(new BotonFigura(new Hexagono(Camara.W-Camara.W/12,Camara.W/2,Camara.W/12, new TexturaColor()), creator));
-		scroll=new Scroll();
+		suelo.setData("Suelo");
 
+		FinalShape aux=new FinalShape(suelo);
+		shapes.addToSet(aux);
+		interactor.add(new BotonFigura(new Hexagono(Camara.W-Camara.W/12,Camara.W/2,Camara.W/12, new TexturaColor()), creator));
+		colisionManager =new ColisionManager();
+		interactor.add(new PowerUp(new Coord(Camara.W-Camara.W/8-10,Camara.H/2),"nieve.png",new Congelar(shapes.getShapes())));
 	}
-	public void addElementos(GrupoBloques grupoBloques)
+	public void addElement(FinalShape finalShape)
 	{
-		elementos.add(grupoBloques);
-
-		puntaje.addPuntaje(grupoBloques.getSize());
-		scroll.setActivoSensor();
+		shapes.addToSet(finalShape);
 		creator.setColor(new TexturaColor());
-
 	}
-	public void dibujar()
+	public void draw()
 	{
-		scroll.detectarScroll(elementos);
-
-		for (Drawable d:elementos)
-			d.draw();
-	}
-	private void setContador(int max)
-	{
-		contador=new ContadorGrafico(Camara.W/13+10, Camara.W/1.5f,Camara.W/13,max);
-	}
-	public void animarContador()
-	{
-		contador.animar();
-	}
-	public void addPuntaje(int x)
-	{
-		puntaje.addPuntaje(x);
+		interactor.draw();
+		shapes.draw();
+		colisionManager.detectarScroll(shapes.getShapes());
 	}
 }

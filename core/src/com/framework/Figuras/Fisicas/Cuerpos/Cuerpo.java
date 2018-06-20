@@ -95,8 +95,9 @@ public abstract class Cuerpo implements PropiedadesFisicas
     public void cambiarTipo(TipoCuerpo nuevoTipo)
     {
         this.tipo=nuevoTipo;
-        destruirCuerpo();
-        crearCuerpo();
+        cuerpo.setType(tipo.getTipo());
+        /*destruirCuerpo();
+        crearCuerpo();*/
     }
 
     /**Añade un nuevo cuerpo al mundo*/
@@ -199,4 +200,5 @@ public abstract class Cuerpo implements PropiedadesFisicas
     /**Crea el cuerpo*/
 
     public abstract void crearCuerpo();
+
 }

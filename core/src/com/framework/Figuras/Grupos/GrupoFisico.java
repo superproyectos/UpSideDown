@@ -3,6 +3,8 @@ package com.framework.Figuras.Grupos;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.framework.Camara;
+import com.framework.Figuras.Fisicas.Cuerpos.TiposDeCuerpos.CuerpoEstatico;
+import com.framework.Figuras.Fisicas.Cuerpos.TiposDeCuerpos.CuerpoKinematico;
 import com.framework.Figuras.Poligonos.Polygon;
 import com.framework.Figuras.PropiedadesFisicas;
 import com.framework.Figuras.Fisicas.Cuerpos.CuerpoPoligono;
@@ -109,4 +111,18 @@ public class GrupoFisico extends Grupo implements PropiedadesFisicas
     {
         cuerpoPoligono.getCuerpo().setLinearVelocity(velocidad);
     }
+    public void stop()
+    {
+        setTipoCuerpo(new CuerpoEstatico());
+        setTipoCuerpo(new CuerpoKinematico());
+    }
+    public void setData(String s)
+    {
+        cuerpoPoligono.setInfoCuerpo(s);
+    }
+    public String getData()
+    {
+        return cuerpoPoligono.getCuerpo().getUserData().toString();
+    }
+
 }

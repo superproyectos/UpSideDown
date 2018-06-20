@@ -1,8 +1,10 @@
 package com.framework.Figuras.Grupos;
 
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.framework.Figuras.Drawable;
 import com.framework.Figuras.Poligonos.Polygon;
+import com.framework.Texturas.TexturaRelleno;
 
 /** Conjunto de polígonos*/
 public class Grupo implements Drawable
@@ -79,5 +81,20 @@ public class Grupo implements Drawable
     public int getSize()
     {
         return elementos.size;
+    }
+    public void changeColor(TexturaRelleno texturaRelleno)
+    {
+        for(Polygon p:elementos)
+            p.cambiarRelleno(texturaRelleno);
+    }
+    public Vector2 centerOfMass()
+    {
+        float x=0,y=0;
+        for(Polygon a:elementos)
+        {
+            x+=a.getPosicionRelativa().x;
+            y+=a.getPosicionRelativa().y;
+        }
+        return new Vector2(x/elementos.size,y/elementos.size);
     }
 }

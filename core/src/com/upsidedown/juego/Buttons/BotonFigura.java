@@ -1,9 +1,10 @@
-package com.upsidedown.juego;
+package com.upsidedown.juego.Buttons;
 
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.framework.Escenario;
 import com.framework.Figuras.Poligonos.Polygon;
 import com.upsidedown.juego.Creators.Creator;
+import com.upsidedown.juego.Presion;
 
 
 public class BotonFigura extends Boton

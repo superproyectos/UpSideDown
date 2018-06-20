@@ -1,15 +1,22 @@
 package com.upsidedown.juego.Creators;
 
+import com.framework.Camara;
 import com.framework.Texturas.TexturaRelleno;
-import com.upsidedown.GrupoBloques;
+import com.upsidedown.FinalShape;
 import com.upsidedown.Sonidos;
 import com.upsidedown.juego.Board;
+import com.upsidedown.juego.GraphicCounter;
+import com.upsidedown.juego.Data;
 
 public class Previsualizer
 {
+	private final int MAX_NUM_OF_BLOCKS=7;
+
 	private Creation creation =new Creation();
 
 	private Preview preview =new Preview();
+
+	private static GraphicCounter counter;
 
 	private Board board;
 
@@ -38,6 +45,7 @@ public class Previsualizer
 	{
 		creation.draw();
 		preview.draw();
+		counter.draw();
 	}
 
 	public void setBoard(Board board)
@@ -45,26 +53,38 @@ public class Previsualizer
 		this.board = board;
 	}
 
-	public Board getBoard()
-	{
-		return board;
-	}
-
 	public void becomeReal()
 	{
 		Sonidos.suelta();
 		preview.resultadoFinal();
-		GrupoBloques resultado = new GrupoBloques(preview);
-		resultado.setDensidad(1);
-		resultado.setFriccion(0.5f);
-		resultado.setRebote(0.1f);
+		FinalShape result = new FinalShape(preview);
 		clear();
-		board.addElementos(resultado);
+		board.addElement(result);
+		Data.score.addPuntaje(result.getSize());
 		changeCounterColor();
+	}
+
+	public void setCounter()
+	{
+		counter=new GraphicCounter(Camara.W/13+10, Camara.W/1.5f,Camara.W/13,MAX_NUM_OF_BLOCKS);
+	}
+	public GraphicCounter getCounter()
+	{
+		return counter;
 	}
 	private void changeCounterColor()
 	{
-		Board.contador.nuevo();
-		Board.contador.setColor(preview.getRelleno());
+		counter.nuevo();
+		counter.setColor(preview.getRelleno());
+	}
+	public void drop()
+	{
+		if(counter.getContador()==0)
+			becomeReal();
+		else
+		{
+			counter.resetear();
+			clear();
+		}
 	}
 }

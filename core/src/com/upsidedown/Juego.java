@@ -45,14 +45,13 @@ public class Juego implements Screen
 	@Override
 	public void render(float delta)
 	{
-
 		Mundo.MUNDO.step(Gdx.graphics.getDeltaTime(),6,2);
 		fondo.dibujar();
-		board.dibujar();
+		board.draw();
 		Escenario.act();
 		Escenario.draw();
 		Mundo.MUNDO.setGravity(new Vector2(-Gdx.input.getAccelerometerX()/10,7f));
-		//camara.modoDebug(Mundo.MUNDO);
+		camara.modoDebug(Mundo.MUNDO);
 	}
 
 	@Override

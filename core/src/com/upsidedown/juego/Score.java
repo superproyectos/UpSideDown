@@ -1,10 +1,10 @@
 package com.upsidedown.juego;
 
-public class Puntaje
+public class Score
 {
 	private int puntos;
 
-	public Puntaje()
+	public Score()
 	{
 		puntos=0;
 	}
@@ -21,6 +21,5 @@ public class Puntaje
 	public void addPuntaje(int x)
 	{
 		puntos+=x;
-		System.out.println(puntos);
 	}
 }

@@ -4,7 +4,7 @@ import com.framework.Figuras.Poligonos.Polygon;
 import com.framework.Texturas.Colores;
 import com.framework.Texturas.TexturaColor;
 import com.upsidedown.Sonidos;
-import com.upsidedown.juego.Board;
+import com.upsidedown.juego.GraphicCounter;
 
 public class Putter
 {
@@ -14,10 +14,13 @@ public class Putter
 
 	private Validator validator;
 
+	private GraphicCounter counter;
+
 	public Putter(Previsualizer previsualizer)
 	{
 		this.preview=previsualizer.getPreview();
 		this.creation=previsualizer.getCreation();
+		counter=previsualizer.getCounter();
 		validator=new Validator(previsualizer);
 	}
 
@@ -33,10 +36,10 @@ public class Putter
 	{
 		if(validator.isFirst()||validator.isConsecutive(p))
 		{
+			playSound();
 			creation.addElemento(p);
 			preview.vistaPrevia(p);
-			Board.contador.decrementa();
-			playSound();
+			counter.decrementa();
 		}
 	}
 
@@ -54,14 +57,14 @@ public class Putter
 		{
 			preview.pop();
 			creation.pop();
-			Board.contador.incrementa();
+			counter.incrementa();
 			Sonidos.pop();
 		}
 	}
 
 	public void selectColor()
 	{
-		if(Board.contador.getContador()!=0)
+		if(counter.getContador()!=0)
 			creation.cambiarRelleno(new TexturaColor(Colores.GRIS));
 		else
 			creation.cambiarRelleno(creation.getRelleno());

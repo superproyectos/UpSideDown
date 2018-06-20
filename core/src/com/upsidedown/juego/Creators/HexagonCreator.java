@@ -5,9 +5,9 @@ import com.framework.Figuras.Poligonos.Hexagono;
 import com.framework.Texturas.TexturaColor;
 import com.framework.Texturas.TexturaRelleno;
 
-public class CreatorHexagonos extends Creator
+public class HexagonCreator extends Creator
 {
-	public CreatorHexagonos(float x, float y, float radio, int filas, int columnas, float margen, TexturaRelleno relleno)
+	public HexagonCreator(float x, float y, float radio, int filas, int columnas, float margen, TexturaRelleno relleno)
 	{
 		super();
 

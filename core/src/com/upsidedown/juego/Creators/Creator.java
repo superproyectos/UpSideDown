@@ -2,7 +2,6 @@ package com.upsidedown.juego.Creators;
 
 import com.badlogic.gdx.utils.Array;
 import com.framework.Figuras.Grupos.Grupo;
-
 import com.framework.Figuras.Poligonos.Polygon;
 import com.framework.Texturas.TexturaColor;
 import com.framework.Texturas.TexturaRelleno;
@@ -10,12 +9,15 @@ import com.upsidedown.juego.Board;
 
 public abstract class Creator extends Grupo
 {
-	private Array<CreatorSensor> creationArea =new Array<CreatorSensor>();
+	private Array<CreatorSensor> creationArea ;
 
 	private static Previsualizer previsualizer=new Previsualizer();
 
 	public Creator()
 	{
+		creationArea=new Array<CreatorSensor>();
+		previsualizer=new Previsualizer();
+		previsualizer.setCounter();
 		setColor(new TexturaColor());
 	}
 

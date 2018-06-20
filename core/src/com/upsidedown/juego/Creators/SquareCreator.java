@@ -6,9 +6,9 @@ import com.framework.Texturas.TexturaColor;
 import com.framework.Texturas.TexturaRelleno;
 
 
-public class CreatorCuadrados extends Creator
+public class SquareCreator extends Creator
 {
-	public CreatorCuadrados(float x, float y, float anchoCasilla, int filas, int columnas, float margen, TexturaRelleno relleno)
+	public SquareCreator(float x, float y, float anchoCasilla, int filas, int columnas, float margen, TexturaRelleno relleno)
 	{
 		super();
 		for(int i=0;i<filas;i++)
@@ -22,5 +22,4 @@ public class CreatorCuadrados extends Creator
 						y + i * (anchoCasilla), anchoCasilla - margen, relleno));
 			}
 	}
-
 }

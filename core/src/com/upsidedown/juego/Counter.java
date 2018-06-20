@@ -1,14 +1,14 @@
 package com.upsidedown.juego;
 
-import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.framework.Figuras.Drawable;
 
 import java.util.Random;
 
-public class Contador
+public abstract class Counter implements Drawable
 {
 	private int contador,aux;
 	private int max;
-	public Contador(int max)
+	public Counter(int max)
 	{
 		this.max=max;
 		contador=aux=numAleatorio();
