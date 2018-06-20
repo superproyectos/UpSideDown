@@ -1,7 +1,7 @@
 package com.upsidedown.juego.Buttons;
 
 import com.framework.Figuras.Coord;
-import com.upsidedown.juego.Action;
+import com.upsidedown.juego.Actions.Action;
 
 public class PowerUp extends BotonImagen
 {

@@ -1,7 +1,7 @@
 package com.upsidedown.juego.Creators;
 
-import com.framework.Escenario;
 import com.framework.Figuras.Poligonos.Polygon;
+import com.upsidedown.juego.Actions.TouchCreator;
 import com.upsidedown.juego.Buttons.Boton;
 
 public class CreatorSensor extends Boton

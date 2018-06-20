@@ -24,7 +24,7 @@ public class CuerpoPoligono extends Cuerpo
         this.elementos=new Array<Polygon>();
         elementos.add(elemento);
         setTipo(tipoCuerpo);
-        setMundo(Mundo.MUNDO);
+        setMundo(Mundo.WORLD);
         crearCuerpo();
     }
     public CuerpoPoligono(Array<Polygon> elementos, TipoCuerpo tipoCuerpo)
@@ -32,7 +32,7 @@ public class CuerpoPoligono extends Cuerpo
         this.elementos=elementos;
         setTipo(tipoCuerpo);
         setPropiedad(new PropiedadCuerpo());
-        setMundo(Mundo.MUNDO);
+        setMundo(Mundo.WORLD);
         crearCuerpo();
     }
 
@@ -41,7 +41,7 @@ public class CuerpoPoligono extends Cuerpo
         setTipo(tipoCuerpo);
         this.elementos=elementos;
         setPropiedad(new PropiedadCuerpo(new PolygonShape(),densidad,friccion,restitucion));
-        setMundo(Mundo.MUNDO);
+        setMundo(Mundo.WORLD);
         crearCuerpo();
     }
 

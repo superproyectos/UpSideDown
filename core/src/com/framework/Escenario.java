@@ -31,4 +31,11 @@ public class Escenario
 	{
 		ESCENARIO.addActor(actor);
 	}
+	public static boolean isOnStage(Actor actor)
+	{
+		for(Actor a:ESCENARIO.getActors())
+			if(a.equals(actor))
+				return true;
+		return false;
+	}
 }

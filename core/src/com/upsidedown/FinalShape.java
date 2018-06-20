@@ -14,7 +14,6 @@ import com.upsidedown.juego.Creators.Preview;
 
 public class FinalShape implements Drawable
 {
-
 	private GrupoFisico grupoFisico;
 
 	public FinalShape(Grupo grupo)
@@ -36,7 +35,7 @@ public class FinalShape implements Drawable
 	public void freez()
 	{
 		if(!getStatus().equals("Suelo"))
-		grupoFisico.setData("BodyLanded");
+			grupoFisico.setData("BodyLanded");
 		grupoFisico.changeColor(new TexturaColor(Color.CYAN));
 		stop();
 	}

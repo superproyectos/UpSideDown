@@ -20,8 +20,11 @@ public class Colores
     public static final Color AZULGRIS=getColor(171, 178, 185,1);
     public static final Color MORADOINTENSO=getColor(165, 105, 189,1);
     public static final Color GRISCLARO=getColor(215, 219, 221,1);
+    public static final Color DEEP_ORANGE=getColor(229, 152, 102,1);
+    public static final Color ESMERALD=getColor(88, 214, 141,1);
+    public static final Color GRAY=getColor(128, 139, 150,1);
     public static final Array<Color> RANDOM=new Array<Color>(new Color[]{AZUL,ROJO,MORADO,TURQUESA,VERDE,
-            AMARILLO,NARANJA,ROSADO,AZULGRIS,MORADOINTENSO,GRISCLARO});
+            AMARILLO,NARANJA,ROSADO,AZULGRIS,MORADOINTENSO,GRISCLARO,DEEP_ORANGE,ESMERALD,GRAY});
     public static final Color aleatorio()
     {
     	int aux=new Random(System.currentTimeMillis()).nextInt(RANDOM.size);

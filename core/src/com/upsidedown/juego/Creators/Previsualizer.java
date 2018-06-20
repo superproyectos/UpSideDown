@@ -1,24 +1,28 @@
 package com.upsidedown.juego.Creators;
 
 import com.framework.Camara;
+import com.framework.Escenario;
 import com.framework.Texturas.TexturaRelleno;
 import com.upsidedown.FinalShape;
 import com.upsidedown.Sonidos;
-import com.upsidedown.juego.Board;
-import com.upsidedown.juego.GraphicCounter;
-import com.upsidedown.juego.Data;
+import com.upsidedown.juego.Game.Board;
+import com.upsidedown.juego.Counters.GraphicCounter;
+import com.upsidedown.juego.Data.Data;
+import com.upsidedown.juego.Data.Score;
 
 public class Previsualizer
 {
 	private final int MAX_NUM_OF_BLOCKS=7;
 
-	private Creation creation =new Creation();
+	private Creation creation=new Creation();
 
-	private Preview preview =new Preview();
+	private Preview preview=new Preview();
 
 	private static GraphicCounter counter;
 
-	private Board board;
+	private static Board board;
+
+	private Score score=Data.score;
 
 	public Preview getPreview()
 	{
@@ -60,7 +64,7 @@ public class Previsualizer
 		FinalShape result = new FinalShape(preview);
 		clear();
 		board.addElement(result);
-		Data.score.addPuntaje(result.getSize());
+		score.addScore(result.getSize());
 		changeCounterColor();
 	}
 
@@ -75,17 +79,21 @@ public class Previsualizer
 	}
 	private void changeCounterColor()
 	{
-		counter.nuevo();
-		counter.setColor(preview.getRelleno());
+		counter.newCounter();
+		counter.setBackground(preview.getRelleno());
 	}
 	public void drop()
 	{
-		if(counter.getContador()==0)
+		if(counter.getCounter()==0)
 			becomeReal();
 		else
 		{
-			counter.resetear();
+			counter.reset();
 			clear();
 		}
+	}
+	public static void resetCounter()
+	{
+		counter=null;
 	}
 }

@@ -8,10 +8,10 @@ import com.framework.Escenario;
 
 import java.awt.Font;
 
-public class Etiqueta
+public class LabelOfGame
 {
 	private Label label;
-	public Etiqueta(float x,float y,String s)
+	public LabelOfGame(float x, float y, String s)
 	{
 		label=new Label(s,new Skin(Gdx.files.internal("skin/quantum-horizon-ui.json")));
 		label.setAlignment(Font.CENTER_BASELINE);
@@ -47,5 +47,9 @@ public class Etiqueta
 	public void setAlineacion(int alineacion)
 	{
 		label.setAlignment(alineacion);
+	}
+	public void remove()
+	{
+		label.remove();
 	}
 }

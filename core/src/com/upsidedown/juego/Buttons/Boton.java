@@ -1,15 +1,15 @@
 package com.upsidedown.juego.Buttons;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.framework.Escenario;
 import com.framework.Figuras.Drawable;
+import com.upsidedown.juego.Actions.Action;
 
 public abstract class Boton extends Actor implements Drawable
 {
-	private EventListener evento;
+	private Action evento;
 
-	public void addEventListener(EventListener evento)
+	public void addEventListener(Action evento)
 	{
 		this.evento = evento;
 		this.addListener(this.evento);

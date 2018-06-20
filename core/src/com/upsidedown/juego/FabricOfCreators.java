@@ -3,10 +3,10 @@ package com.upsidedown.juego;
 import com.framework.Camara;
 import com.framework.Texturas.Colores;
 import com.framework.Texturas.TexturaColor;
-import com.framework.Texturas.TexturaRelleno;
 import com.upsidedown.juego.Creators.Creator;
 import com.upsidedown.juego.Creators.HexagonCreator;
 import com.upsidedown.juego.Creators.SquareCreator;
+import com.upsidedown.juego.Game.Board;
 
 public class FabricOfCreators
 {

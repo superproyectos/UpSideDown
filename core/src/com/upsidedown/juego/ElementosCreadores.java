@@ -4,6 +4,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.framework.Escenario;
 import com.framework.Figuras.Drawable;
 import com.framework.Figuras.Poligonos.Polygon;
+import com.upsidedown.juego.Actions.Drag.Drag;
+import com.upsidedown.juego.Actions.Drag.Dragable;
 
 public abstract class ElementosCreadores extends Actor implements Dragable,Drawable
 {

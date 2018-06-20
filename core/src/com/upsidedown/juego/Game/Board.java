@@ -1,4 +1,4 @@
-package com.upsidedown.juego;
+package com.upsidedown.juego.Game;
 
 import com.framework.Camara;
 import com.framework.Figuras.Coord;
@@ -9,44 +9,64 @@ import com.framework.Figuras.Poligonos.Rectangle;
 import com.framework.Texturas.TexturaColor;
 import com.upsidedown.juego.Buttons.BotonFigura;
 import com.upsidedown.juego.Buttons.PowerUp;
+import com.upsidedown.juego.Colisions.ColisionManager;
+import com.upsidedown.juego.Actions.Freezer;
+import com.upsidedown.juego.Colisions.Scroll;
 import com.upsidedown.juego.Creators.Creator;
 import com.upsidedown.FinalShape;
+import com.upsidedown.juego.FabricOfCreators;
 
 public class Board
 {
 	private Creator creator;
+
 	private Interactor interactor;
+
 	private SetOfShapes shapes;
-	private ColisionManager colisionManager;
+
+	private Scroll scroll;
 
 	public Board()
 	{
 		shapes=new SetOfShapes();
-		Data.score =(new ScoreGrafico(30,Camara.H-30,1.5f));
-		interactor=new Interactor();
+		addFloor();
+		addCreator();
+		createInteractor();
+		scroll=new Scroll();
+	}
+
+	private void addCreator()
+	{
 		FabricOfCreators c=new FabricOfCreators();
 		creator=c.createSquareCreator(this);
-		interactor.add(creator);
+	}
 
+	private void addFloor()
+	{
 		GrupoFisico suelo=new GrupoFisico(new Rectangle(Camara.W/4,Camara.H-50,Camara.W/2,50,new TexturaColor()));
 		suelo.setTipoCuerpo(new CuerpoKinematico());
 		suelo.setData("Suelo");
-
-		FinalShape aux=new FinalShape(suelo);
-		shapes.addToSet(aux);
-		interactor.add(new BotonFigura(new Hexagono(Camara.W-Camara.W/12,Camara.W/2,Camara.W/12, new TexturaColor()), creator));
-		colisionManager =new ColisionManager();
-		interactor.add(new PowerUp(new Coord(Camara.W-Camara.W/8-10,Camara.H/2),"nieve.png",new Congelar(shapes.getShapes())));
+		shapes.addToSet(new FinalShape(suelo));
 	}
+
+	private void createInteractor()
+	{
+		interactor=new Interactor();
+		interactor.add(creator);
+		interactor.add(new BotonFigura(new Hexagono(Camara.W-Camara.W/12,Camara.W/2,Camara.W/12, new TexturaColor()), creator));
+		interactor.add(new PowerUp(new Coord(Camara.W-Camara.W/6-10,Camara.H/2),"nieve.png",new Freezer(shapes.getShapes())));
+	}
+
 	public void addElement(FinalShape finalShape)
 	{
 		shapes.addToSet(finalShape);
 		creator.setColor(new TexturaColor());
 	}
+
 	public void draw()
 	{
 		interactor.draw();
 		shapes.draw();
-		colisionManager.detectarScroll(shapes.getShapes());
+		scroll.detectarScroll(shapes.getShapes());
 	}
 }

@@ -25,7 +25,7 @@ public abstract class Cuerpo implements PropiedadesFisicas
 
     /**Mundo al que pertenece el cuerpo*/
 
-    private World mundo=Mundo.MUNDO;
+    private World mundo=Mundo.WORLD;
 
     /**Retorna el cuerpo manejado*/
 
@@ -100,7 +100,7 @@ public abstract class Cuerpo implements PropiedadesFisicas
         crearCuerpo();*/
     }
 
-    /**Añade un nuevo cuerpo al mundo*/
+    /**Añade un newCounter cuerpo al mundo*/
 
     public Body nuevoCuerpo(Figura figura)
     {

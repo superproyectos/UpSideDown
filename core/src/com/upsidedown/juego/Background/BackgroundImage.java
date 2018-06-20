@@ -1,4 +1,4 @@
-package com.upsidedown.juego;
+package com.upsidedown.juego.Background;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -6,10 +6,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.framework.Camara;
 import com.framework.Escenario;
 
-public class FondoImagen extends Actor
+public class BackgroundImage extends Actor
 {
 	private Texture textura;
-	public FondoImagen()
+	public BackgroundImage()
 	{
 		textura=new Texture("slider-bg-grey.png");
 		Escenario.addActor(this);

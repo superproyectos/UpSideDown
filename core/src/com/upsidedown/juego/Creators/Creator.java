@@ -5,16 +5,18 @@ import com.framework.Figuras.Grupos.Grupo;
 import com.framework.Figuras.Poligonos.Polygon;
 import com.framework.Texturas.TexturaColor;
 import com.framework.Texturas.TexturaRelleno;
-import com.upsidedown.juego.Board;
+import com.upsidedown.juego.Game.Board;
 
 public abstract class Creator extends Grupo
 {
-	private Array<CreatorSensor> creationArea=new Array<CreatorSensor>();
+	private Array<CreatorSensor> creationArea;
 
-	private static Previsualizer previsualizer=new Previsualizer();
+	private static Previsualizer previsualizer;
 
 	public Creator()
 	{
+		creationArea=new Array<CreatorSensor>();
+		previsualizer=new Previsualizer();
 		previsualizer.setCounter();
 		setColor(new TexturaColor());
 	}

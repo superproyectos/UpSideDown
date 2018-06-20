@@ -1,4 +1,4 @@
-package com.upsidedown.juego;
+package com.upsidedown.juego.Data;
 
 public class Score
 {
@@ -8,6 +8,7 @@ public class Score
 	{
 		puntos=0;
 	}
+
 	public int getPuntos()
 	{
 		return puntos;
@@ -18,7 +19,8 @@ public class Score
 		if (puntos>0)
 			this.puntos = puntos;
 	}
-	public void addPuntaje(int x)
+
+	public void addScore(int x)
 	{
 		puntos+=x;
 	}

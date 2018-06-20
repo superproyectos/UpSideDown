@@ -1,4 +1,4 @@
-package com.upsidedown.juego;
+package com.upsidedown.juego.Actions.Drag;
 
 public interface Dragable
 {

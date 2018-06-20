@@ -1,18 +1,21 @@
 package com.upsidedown;
 
-import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 import com.framework.Camara;
 import com.framework.Escenario;
 import com.framework.Figuras.Fisicas.Mundo;
-import com.upsidedown.juego.FondoImagen;
+import com.upsidedown.juego.Background.BackgroundImage;
 import com.framework.Texturas.Colores;
-import com.upsidedown.juego.Daymer;
-import com.upsidedown.juego.Fondo;
-import com.upsidedown.juego.Board;
+import com.upsidedown.juego.Background.Daymer;
+import com.upsidedown.juego.Background.Background;
+import com.upsidedown.juego.Colisions.ColisionManager;
+import com.upsidedown.juego.Creators.Previsualizer;
+import com.upsidedown.juego.Data.Data;
+import com.upsidedown.juego.Game.Board;
+import com.upsidedown.juego.MusicOfTheGame;
 
 
 public class Juego implements Screen
@@ -20,38 +23,57 @@ public class Juego implements Screen
 	Camara camara;
 	Board board;
 	Escenario escenario;
-	Fondo fondo;
-	FondoImagen f;
-	Music musica;
+	Background background;
+	static BackgroundImage f;
+	MusicOfTheGame musicOfTheGame;
+	public static boolean gameOver=false;
+	public static boolean restart=false;
 	public Juego()
 	{
-		Camara.setPPM(100);
-		camara=new Camara();
-		f=new FondoImagen();
-		board =new Board();
-		escenario=new Escenario();
-		Mundo.MUNDO.setGravity(new Vector2(0,7f));
-		fondo=new Daymer(Colores.getColor(  74, 35, 90 ,1),6);
+		initialize();
+		musicOfTheGame=new MusicOfTheGame("Electrodoodle.mp3");
 
 	}
+	private void initialize()
+	{
+		Escenario.getESCENARIO().clear();
+
+		Data.resetScore();
+		Camara.setPPM(100);
+		camara=new Camara();
+		f=new BackgroundImage();
+		board =new Board();
+		escenario=new Escenario();
+		background =new Daymer(Colores.getColor(  74, 35, 90 ,1),6);
+		new ColisionManager();
+	}
+
 	@Override
 	public void show()
 	{
-		musica = Gdx.audio.newMusic(Gdx.files.getFileHandle("Electrodoodle.mp3", Files.FileType.Internal));
-		musica.play();
-		musica.setLooping(true);
+
 	}
 
 	@Override
 	public void render(float delta)
 	{
-		Mundo.MUNDO.step(Gdx.graphics.getDeltaTime(),6,2);
-		fondo.dibujar();
-		board.draw();
+		background.draw();
+		if(!gameOver)
+		{
+			Mundo.WORLD.step(Gdx.graphics.getDeltaTime(), 6, 2);
+			board.draw();
+			Mundo.WORLD.setGravity(new Vector2(-Gdx.input.getAccelerometerX() / 10, 7f));
+		}
 		Escenario.act();
 		Escenario.draw();
-		Mundo.MUNDO.setGravity(new Vector2(-Gdx.input.getAccelerometerX()/10,7f));
-		camara.modoDebug(Mundo.MUNDO);
+		if(restart)
+		{
+			Previsualizer.resetCounter();
+			gameOver=false;
+			restart=false;
+			initialize();
+		}
+		//camara.modoDebug(Mundo.WORLD);
 	}
 
 	@Override
@@ -82,5 +104,11 @@ public class Juego implements Screen
 	public void dispose()
 	{
 
+	}
+	public static void clear()
+	{
+		Escenario.getESCENARIO().clear();
+		Mundo.destroyTheWorld();
+		f=new BackgroundImage();
 	}
 }

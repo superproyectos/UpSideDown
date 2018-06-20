@@ -7,12 +7,9 @@ public class Validator
 {
 	private Creation creation;
 
-	private Preview preview;
-
 	public Validator(Previsualizer previsualizer)
 	{
 		creation=previsualizer.getCreation();
-		preview=previsualizer.getPreview();
 	}
 	public boolean isRepeat(Polygon p)
 	{

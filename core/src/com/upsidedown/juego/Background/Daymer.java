@@ -1,4 +1,4 @@
-package com.upsidedown.juego;
+package com.upsidedown.juego.Background;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.framework.Texturas.Colores;
 
 
-public class Daymer extends FondoColor
+public class Daymer extends BackgroundColor
 {
 	private float ang;
 	public Daymer(Color color,float hora)
@@ -16,7 +16,7 @@ public class Daymer extends FondoColor
 	}
 
 	@Override
-	public void dibujar()
+	public void draw()
 	{
 		ang+=0.02;
 		ang%=Math.PI;

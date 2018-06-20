@@ -27,7 +27,7 @@ public class Framework extends ApplicationAdapter
 	{
 		Camara.setPPM(PPM);
 		camaras=new Camara();
-		mundo= Mundo.MUNDO;
+		mundo= Mundo.WORLD;
 
 		mundo.setGravity(new Vector2(0,-5));
 		createPhysicsObjectFromGraphics(c,new Vector2(0,0),BodyDef.BodyType.StaticBody);

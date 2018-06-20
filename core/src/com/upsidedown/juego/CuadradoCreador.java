@@ -12,5 +12,4 @@ public class CuadradoCreador extends ElementosCreadores
 		setBounds(x-lado,y-lado,2*lado,2*lado);
 		establecerDrag();
 	}
-
 }

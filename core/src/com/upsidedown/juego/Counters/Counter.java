@@ -1,44 +1,46 @@
-package com.upsidedown.juego;
+package com.upsidedown.juego.Counters;
 
 import com.framework.Figuras.Drawable;
-
 import java.util.Random;
 
 public abstract class Counter implements Drawable
 {
 	private int contador,aux;
+
 	private int max;
+
 	public Counter(int max)
 	{
 		this.max=max;
-		contador=aux=numAleatorio();
-
+		contador=aux= randomNum();
 	}
-	private int numAleatorio()
+
+	private int randomNum()
 	{
 		return new Random(System.currentTimeMillis()).nextInt(max)+1;
 	}
-	public int getContador()
+
+	public int getCounter()
 	{
 		return contador;
 	}
-	public void resetear()
+
+	public void reset()
 	{
 		contador=aux;
 	}
-	public void nuevo()
+
+	public void newCounter()
 	{
-		contador=aux=numAleatorio();
+		contador=aux= randomNum();
 	}
-	public void setContador(int contador)
-	{
-		this.contador = contador;
-	}
-	public void decrementa()
+
+	public void decrease()
 	{
 		contador--;
 	}
-	public void incrementa()
+
+	public void increase()
 	{
 		contador++;
 	}

@@ -6,18 +6,17 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.framework.Camara;
-import com.framework.Escenario;
 import com.framework.Figuras.Coord;
-import com.upsidedown.juego.Action;
+import com.upsidedown.juego.Actions.Action;
 
 public abstract class BotonImagen extends Boton
 {
 	private ImageButton imageButton;
 	public BotonImagen(Coord coord, String path, Action action)
 	{
-		setBounds(coord.getX(),coord.getY(), Camara.W/8,Camara.W/8);
+		setBounds(coord.getX(),coord.getY(), Camara.W/6,Camara.W/6);
 		imageButton=new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(path))));
-		imageButton.setBounds(coord.getX(),coord.getY(), Camara.W/8,Camara.W/8);
+		imageButton.setBounds(coord.getX(),coord.getY(), Camara.W/6,Camara.W/6);
 		addEventListener(action);
 		addToStage();
 	}

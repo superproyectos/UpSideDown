@@ -18,6 +18,7 @@ public class Sonidos
 			/*7*/Gdx.audio.newSound( Gdx.files.getFileHandle("sounds/destroy.wav", Files.FileType.Internal)),
 			/*8*/Gdx.audio.newSound( Gdx.files.getFileHandle("sounds/pop.mp3", Files.FileType.Internal))
 	};
+	public static void gameOver(){SONIDOS[0].play();}
 	public static void toque()
 	{
 		SONIDOS[4].play();
