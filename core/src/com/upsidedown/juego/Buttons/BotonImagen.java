@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.framework.Camara;
 import com.framework.Figuras.Coord;
 import com.upsidedown.juego.Actions.Action;
+import com.upsidedown.juego.Animations.ActorBounce;
 
 public abstract class BotonImagen extends Boton
 {
@@ -17,6 +18,7 @@ public abstract class BotonImagen extends Boton
 		setBounds(coord.getX(),coord.getY(), Camara.W/6,Camara.W/6);
 		imageButton=new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(path))));
 		imageButton.setBounds(coord.getX(),coord.getY(), Camara.W/6,Camara.W/6);
+		setAnimation(new ActorBounce(imageButton.getImage()));
 		addEventListener(action);
 		addToStage();
 	}
@@ -25,5 +27,6 @@ public abstract class BotonImagen extends Boton
 	public void draw(Batch batch,float d)
 	{
 		imageButton.draw(batch,d);
+		animate();
 	}
 }

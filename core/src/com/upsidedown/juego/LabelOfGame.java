@@ -5,12 +5,15 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.framework.Escenario;
+import com.upsidedown.juego.Animations.Animation;
+import com.upsidedown.juego.Animations.TextBounce;
 
 import java.awt.Font;
 
 public class LabelOfGame
 {
 	private Label label;
+	private Animation animation;
 	public LabelOfGame(float x, float y, String s)
 	{
 		label=new Label(s,new Skin(Gdx.files.internal("skin/quantum-horizon-ui.json")));
@@ -51,5 +54,15 @@ public class LabelOfGame
 	public void remove()
 	{
 		label.remove();
+	}
+
+	public void setAnimation(Animation animation)
+	{
+		this.animation=animation;
+	}
+	public void animate()
+	{
+		if (animation!=null)
+			animation.animate();
 	}
 }

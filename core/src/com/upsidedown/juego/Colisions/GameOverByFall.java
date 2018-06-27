@@ -7,12 +7,8 @@ import com.framework.Figuras.Fisicas.Cuerpos.CuerpoPoligono;
 import com.framework.Figuras.Fisicas.Cuerpos.TiposDeCuerpos.CuerpoEstatico;
 import com.framework.Figuras.Poligonos.Rectangle;
 import com.framework.Texturas.TexturaColor;
-import com.upsidedown.Juego;
-import com.upsidedown.Main;
-import com.upsidedown.Sonidos;
-import com.upsidedown.juego.GameOverScreen;
-import com.upsidedown.juego.LabelOfGame;
-import com.upsidedown.juego.Labels.GameOverLabel;
+import com.upsidedown.juego.Screens.ScreenManager;
+import com.upsidedown.juego.Screens.ScreenSelector;
 
 public class GameOverByFall implements GameOver
 {
@@ -55,11 +51,6 @@ public class GameOverByFall implements GameOver
 	@Override
 	public void gameOver()
 	{
-		if (!Juego.gameOver)
-		{
-			Juego.gameOver = true;
-			new GameOverScreen();
-			Sonidos.gameOver();
-		}
+		ScreenManager.getInstance().showScreen(ScreenSelector.GAME_OVER);
 	}
 }

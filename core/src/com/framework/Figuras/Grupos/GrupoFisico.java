@@ -124,5 +124,8 @@ public class GrupoFisico extends Grupo implements PropiedadesFisicas
     {
         return cuerpoPoligono.getCuerpo().getUserData().toString();
     }
+    public void resetMass()
+    {
 
+    }
 }

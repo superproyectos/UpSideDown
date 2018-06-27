@@ -1,10 +1,11 @@
 package com.framework.Figuras;
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Disposable;
 
 /**Figuras con la capacidad de dibujarse*/
 
-public abstract class Figura implements Drawable
+public abstract class Figura implements Drawable,Disposable
 {
 
     protected CanvasFactory canvas;
@@ -88,5 +89,6 @@ public abstract class Figura implements Drawable
     /** Obtiene la posición relativa de la figura respecto a la cámara*/
 
     public abstract Vector2 getPosicionRelativa();
+
 
 }

@@ -4,6 +4,7 @@ import com.framework.Camara;
 import com.framework.Figuras.Poligonos.Hexagono;
 import com.framework.Texturas.Colores;
 import com.framework.Texturas.TexturaColor;
+import com.upsidedown.Sonidos;
 import com.upsidedown.juego.Creators.Creator;
 import com.upsidedown.juego.Creators.SquareCreator;
 import com.upsidedown.juego.Creators.HexagonCreator;
@@ -20,6 +21,7 @@ public class CreatorChanger extends Action
 	@Override
 	public void execute()
 	{
+		Sonidos.destroy();
 		if(creator.typeStored() instanceof Hexagono)
 			creator.sustituirCreador(new SquareCreator(Camara.W/4,Camara.W/8,Camara.W/8,3,5,5, new TexturaColor(Colores.getColor(105, 52, 127,1))));
 		else

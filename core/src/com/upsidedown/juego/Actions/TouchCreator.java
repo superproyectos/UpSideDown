@@ -3,7 +3,6 @@ package com.upsidedown.juego.Actions;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.framework.Figuras.Poligonos.Polygon;
-import com.upsidedown.juego.Actions.Action;
 import com.upsidedown.juego.Creators.Previsualizer;
 import com.upsidedown.juego.Creators.Putter;
 

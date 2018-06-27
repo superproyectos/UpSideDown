@@ -34,4 +34,6 @@ public class Sonidos
 	public static void pop(){SONIDOS[8].play();}
 	public static void congelar(){SONIDOS[1].play();}
 	public static void land(){SONIDOS[5].play();}
+	public static void shoot(){SONIDOS[3].play();}
+	public static void destroy(){SONIDOS[7].play();}
 }

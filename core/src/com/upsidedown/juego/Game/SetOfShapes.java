@@ -27,5 +27,4 @@ public class SetOfShapes
 	{
 		return shapes;
 	}
-
 }

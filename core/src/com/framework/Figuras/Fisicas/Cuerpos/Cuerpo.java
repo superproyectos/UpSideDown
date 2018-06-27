@@ -201,4 +201,8 @@ public abstract class Cuerpo implements PropiedadesFisicas
 
     public abstract void crearCuerpo();
 
+    public void resetMass()
+    {
+        cuerpo.resetMassData();
+    }
 }

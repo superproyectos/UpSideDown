@@ -15,13 +15,12 @@ import com.upsidedown.juego.Creators.Preview;
 public class FinalShape implements Drawable
 {
 	private GrupoFisico grupoFisico;
-
+	private static boolean tetrisMode=false;
 	public FinalShape(Grupo grupo)
 	{
 		grupoFisico=new GrupoFisico(grupo);
-		grupoFisico.setDensidad(1);
-		grupoFisico.setFriccion(0.5f);
-		grupoFisico.setRebote(0.1f);
+		if (!tetrisMode)
+			grupoFisico.setPropiedades(1,0.5f,0.1f);
 		grupoFisico.setData("BodyOnFall");
 	}
 	public FinalShape(GrupoFisico grupo)
@@ -59,5 +58,13 @@ public class FinalShape implements Drawable
 	public float getY()
 	{
 		return grupoFisico.centerOfMass().y;
+	}
+	public void staticProperties()
+	{
+		grupoFisico.resetMass();
+	}
+	public void setTetrisMode()
+	{
+		tetrisMode=!tetrisMode;
 	}
 }

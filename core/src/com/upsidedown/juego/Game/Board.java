@@ -7,6 +7,8 @@ import com.framework.Figuras.Grupos.GrupoFisico;
 import com.framework.Figuras.Poligonos.Hexagono;
 import com.framework.Figuras.Poligonos.Rectangle;
 import com.framework.Texturas.TexturaColor;
+import com.upsidedown.juego.Actions.CreatorChanger;
+import com.upsidedown.juego.Actions.TetrisMode;
 import com.upsidedown.juego.Buttons.BotonFigura;
 import com.upsidedown.juego.Buttons.PowerUp;
 import com.upsidedown.juego.Colisions.ColisionManager;
@@ -53,8 +55,9 @@ public class Board
 	{
 		interactor=new Interactor();
 		interactor.add(creator);
-		interactor.add(new BotonFigura(new Hexagono(Camara.W-Camara.W/12,Camara.W/2,Camara.W/12, new TexturaColor()), creator));
+		interactor.add(new PowerUp(new Coord(Camara.W-Camara.W/6-10,Camara.H/2+Camara.W/6+10),"tettris.png", new TetrisMode(shapes.getShapes())));
 		interactor.add(new PowerUp(new Coord(Camara.W-Camara.W/6-10,Camara.H/2),"nieve.png",new Freezer(shapes.getShapes())));
+		interactor.add(new PowerUp(new Coord(Camara.W-Camara.W/6-10,Camara.H/2-Camara.W/6-10),"sel.png", new CreatorChanger(creator)));
 	}
 
 	public void addElement(FinalShape finalShape)

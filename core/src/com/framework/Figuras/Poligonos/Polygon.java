@@ -165,4 +165,10 @@ public abstract class Polygon extends Figura
         poligono=crearPoligono(relleno, vertex);
     }
     public abstract Polygon copy();
+
+    @Override
+    public void dispose()
+    {
+
+    }
 }

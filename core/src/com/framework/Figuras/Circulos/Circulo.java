@@ -48,4 +48,10 @@ public class Circulo extends Figura
     {
         return new Vector2(getX(),getY());
     }
+
+    @Override
+    public void dispose()
+    {
+
+    }
 }
